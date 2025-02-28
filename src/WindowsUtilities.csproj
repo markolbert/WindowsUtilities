@@ -27,7 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\EncryptedConfiguration\EncryptedConfiguration.csproj" />
+	  <ProjectReference Include="..\..\EncryptedConfiguration\src\EncryptedConfiguration.csproj" />
 	</ItemGroup>
 
 </Project>
