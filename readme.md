@@ -2,7 +2,7 @@
 
 The library repository is available on [github](https://github.com/markolbert/ProgrammingUtilities/blob/master/WindowsUtilities/docs/readme.md).
 
-The change log is [available here](changes.md).
+The change log is [available here](docs/changes.md).
 
 Provides support utilities for Windows App (WinUI 3) programs.
 
