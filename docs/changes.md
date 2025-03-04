@@ -2,6 +2,7 @@
 
 |Version|Description|
 |:-----:|-----------|
+|1.2.0|updated to Net9|
 |1.1.0|added encryptable configuration class and some startup helper classes|
 |1.0.1|fixed nuget dependencies|
 |1.0.0|initial release|
