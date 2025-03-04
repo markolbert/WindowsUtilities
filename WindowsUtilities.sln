@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsUtilities", "src\Win
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "externals", "externals", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptedConfiguration", "..\EncryptedConfiguration\src\EncryptedConfiguration.csproj", "{DFFE6A2A-355A-527E-8F07-F2313EA4707C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,16 +17,9 @@ Global
 		{2A170582-7DDD-9CBF-0585-AC080CEBEC27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A170582-7DDD-9CBF-0585-AC080CEBEC27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A170582-7DDD-9CBF-0585-AC080CEBEC27}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DFFE6A2A-355A-527E-8F07-F2313EA4707C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFFE6A2A-355A-527E-8F07-F2313EA4707C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFFE6A2A-355A-527E-8F07-F2313EA4707C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFFE6A2A-355A-527E-8F07-F2313EA4707C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{DFFE6A2A-355A-527E-8F07-F2313EA4707C} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B18845E0-14D4-44FF-9D43-19A2D13C8845}
