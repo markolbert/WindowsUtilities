@@ -4,19 +4,25 @@
 		<TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
 		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
 		<UseWinUI>true</UseWinUI>
-
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
 		<AssemblyName>J4JSoftware.WindowsUtilities</AssemblyName>
 		<RootNamespace>J4JSoftware.WindowsUtilities</RootNamespace>
-		<Nullable>enable</Nullable>
 		<Authors>Mark A. Olbert</Authors>
 		<Company>Jump for Joy Software</Company>
 		<Product>J4JSoftware Windows utilities</Product>
 		<Description>provides utilities for Windows Apps (WinUI 3)</Description>
 		<Copyright>© Mark A. Olbert all rights reserved</Copyright>
+		<Version>1.2.0.0</Version>
+		<AssemblyVersion>1.2.0.0</AssemblyVersion>
 		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/markolbert/ProgrammingUtilities</RepositoryUrl>
-		<Version>1.0.1.0</Version>
-		<AssemblyVersion>1.0.1.0</AssemblyVersion>
+		<RepositoryUrl>https://github.com/markolbert/WindowsUtilities</RepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<PackageReleaseNotes>add geometric transform methods, updated to Net9</PackageReleaseNotes>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<PackageLicenseFile>license.md</PackageLicenseFile>
 	</PropertyGroup>
 
 	<ItemGroup>
