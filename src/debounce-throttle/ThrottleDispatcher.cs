@@ -1,4 +1,5 @@
 ﻿#region copyright
+
 // Copyright (c) 2021, 2022, 2023 Mark A. Olbert 
 // https://www.JumpForJoySoftware.com
 // ThrottleDispatcher.cs
@@ -17,6 +18,7 @@
 // 
 // You should have received a copy of the GNU General Public License along 
 // with WindowsUtilities. If not, see <https://www.gnu.org/licenses/>.
+
 #endregion
 
 using System;
@@ -29,11 +31,11 @@ namespace J4JSoftware.WindowsUtilities;
 public class ThrottleDispatcher
 {
     private DispatcherTimer? _timer;
-    private DateTime _timerStarted = DateTime.UtcNow.AddYears(-1);
+    private DateTime _timerStarted = DateTime.UtcNow.AddYears( -1 );
     private Action<object?>? _action;
     private object? _optParam;
 
-    public void Throttle(int interval, Action<object?> action, object? optParam = null)
+    public void Throttle( int interval, Action<object?> action, object? optParam = null )
     {
         _action = action;
         _optParam = optParam;
@@ -45,22 +47,22 @@ public class ThrottleDispatcher
 
         // if timeout is not up yet - adjust timeout to fire 
         // with potentially new Action parameters           
-        if (curTime.Subtract(_timerStarted).TotalMilliseconds < interval)
-            interval -= (int)curTime.Subtract(_timerStarted).TotalMilliseconds;
+        if( curTime.Subtract( _timerStarted ).TotalMilliseconds < interval )
+            interval -= (int) curTime.Subtract( _timerStarted ).TotalMilliseconds;
 
         _timer = new DispatcherTimer();
         _timer.Tick += OnTimerTick;
-        _timer.Interval = TimeSpan.FromMilliseconds(interval);
+        _timer.Interval = TimeSpan.FromMilliseconds( interval );
 
         _timer.Start();
         _timerStarted = curTime;
     }
 
-    private void OnTimerTick(object? sender, object e)
+    private void OnTimerTick( object? sender, object e )
     {
         _timer?.Stop();
         _timer = null;
 
-        _action!.Invoke(_optParam);
+        _action!.Invoke( _optParam );
     }
 }

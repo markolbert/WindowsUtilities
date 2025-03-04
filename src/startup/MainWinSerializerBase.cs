@@ -1,4 +1,5 @@
 ﻿#region copyright
+
 // Copyright (c) 2021, 2022, 2023 Mark A. Olbert 
 // https://www.JumpForJoySoftware.com
 // MainWinSerializerBase.cs
@@ -17,28 +18,28 @@
 // 
 // You should have received a copy of the GNU General Public License along 
 // with WindowsUtilities. If not, see <https://www.gnu.org/licenses/>.
+
 #endregion
 
 using System;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.UI;
-using Microsoft.UI.Windowing;
 using Windows.Devices.Display;
 using Windows.Devices.Enumeration;
 using Windows.Graphics;
-using Microsoft.UI.Xaml;
-using WinRT.Interop;
-using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System.Text.Json;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using WinRT.Interop;
 
 namespace J4JSoftware.WindowsUtilities;
 
 public abstract class MainWinSerializerBase<TConfig>
-where TConfig : WinUIConfigBase
+    where TConfig : WinUIConfigBase
 {
     public static async Task<DisplayInfo?> GetPrimaryDisplayInfoAsync()
     {
@@ -52,7 +53,7 @@ where TConfig : WinUIConfigBase
             return null;
 
         return new DisplayInfo( monitorInfo.NativeResolutionInRawPixels.Width,
-                                monitorInfo.NativeResolutionInRawPixels.Height, 
+                                monitorInfo.NativeResolutionInRawPixels.Height,
                                 monitorInfo.RawDpiX,
                                 monitorInfo.RawDpiY );
     }
@@ -99,17 +100,16 @@ where TConfig : WinUIConfigBase
         || AppWindow == null )
             return;
 
-
         _throttleWinChange.Throttle( 100,
                                      () =>
                                      {
-                                         _appConfig.MainWindowRectangle = new PositionSize(AppWindow.Position.X,
+                                         _appConfig.MainWindowRectangle = new PositionSize( AppWindow.Position.X,
                                              AppWindow.Position.Y,
                                              AppWindow.Size.Width,
-                                             AppWindow.Size.Height);
+                                             AppWindow.Size.Height );
 
                                          WindowChanged?.Invoke( this, EventArgs.Empty );
-                                     });
+                                     } );
     }
 
     protected abstract RectInt32 GetDefaultRectangle();
@@ -132,7 +132,7 @@ where TConfig : WinUIConfigBase
 
     protected virtual void OnMainWindowClosed()
     {
-        if( !_winApp.SaveConfigurationOnExit 
+        if( !_winApp.SaveConfigurationOnExit
         || string.IsNullOrEmpty( _appConfig?.UserConfigurationFilePath ) )
             return;
 
@@ -140,7 +140,7 @@ where TConfig : WinUIConfigBase
 
         try
         {
-            var jsonText = JsonSerializer.Serialize(_appConfig, _jsonOptions);
+            var jsonText = JsonSerializer.Serialize( _appConfig, _jsonOptions );
 
             File.WriteAllText( _appConfig.UserConfigurationFilePath, jsonText );
         }

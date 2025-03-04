@@ -1,4 +1,5 @@
 ﻿#region copyright
+
 // Copyright (c) 2021, 2022, 2023 Mark A. Olbert 
 // https://www.JumpForJoySoftware.com
 // WinUIConfigBase.cs
@@ -17,15 +18,16 @@
 // 
 // You should have received a copy of the GNU General Public License along 
 // with WindowsUtilities. If not, see <https://www.gnu.org/licenses/>.
+
 #endregion
 
-using J4JSoftware.EncryptedConfiguration;
+using Windows.Storage;
 
 namespace J4JSoftware.WindowsUtilities;
 
 public class WinUIConfigBase : ConsoleAppConfig
 {
-    public new static string UserFolder { get; } = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
+    public new static string UserFolder { get; } = ApplicationData.Current.LocalFolder.Path;
 
     protected WinUIConfigBase()
     {

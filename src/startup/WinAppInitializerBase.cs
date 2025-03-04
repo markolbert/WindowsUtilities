@@ -1,4 +1,5 @@
 ﻿#region copyright
+
 // Copyright (c) 2021, 2022, 2023 Mark A. Olbert 
 // https://www.JumpForJoySoftware.com
 // WinAppInitializerBase.cs
@@ -17,6 +18,7 @@
 // 
 // You should have received a copy of the GNU General Public License along 
 // with WindowsUtilities. If not, see <https://www.gnu.org/licenses/>.
+
 #endregion
 
 using System;
@@ -50,14 +52,14 @@ public class WinAppInitializerBase<TConfig>
         string configFileName = "userConfig.json",
         JsonSerializerOptions? jsonOptions = null,
         string? cryptoAppName = null
-        )
+    )
     {
         _winApp = winApp;
 
         jsonOptions ??= new JsonSerializerOptions { WriteIndented = true };
         _jsonOptions = jsonOptions;
 
-        _configPath = Path.Combine(WinUIConfigBase.UserFolder, configFileName);
+        _configPath = Path.Combine( WinUIConfigBase.UserFolder, configFileName );
 
         _cryptoAppName = cryptoAppName ?? _winApp.GetType().Name;
     }
@@ -67,10 +69,10 @@ public class WinAppInitializerBase<TConfig>
     public bool Initialize()
     {
         var serilogConfig = GetSerilogConfiguration();
-        if (serilogConfig != null)
+        if( serilogConfig != null )
         {
-            LoggerFactory = new LoggerFactory().AddSerilog(serilogConfig.CreateLogger());
-            _logger = LoggerFactory.CreateLogger(_winApp.GetType());
+            LoggerFactory = new LoggerFactory().AddSerilog( serilogConfig.CreateLogger() );
+            _logger = LoggerFactory.CreateLogger( _winApp.GetType() );
         }
 
         try
@@ -88,13 +90,13 @@ public class WinAppInitializerBase<TConfig>
         }
         catch( CryptographicException exCrypto )
         {
-            _logger?.LogError("Could not decrypt the app configuration file, message was '{mesg}'", exCrypto.Message);
+            _logger?.LogError( "Could not decrypt the app configuration file, message was '{mesg}'", exCrypto.Message );
             IsInitialized = true;
         }
-        catch (Exception ex)
+        catch( Exception ex )
         {
             IsInitialized = false;
-            _logger?.LogCritical("Failed to initialize app, message was '{mesg}'", ex.Message);
+            _logger?.LogCritical( "Failed to initialize app, message was '{mesg}'", ex.Message );
         }
 
         return IsInitialized;
@@ -107,24 +109,25 @@ public class WinAppInitializerBase<TConfig>
 
     protected virtual IHostBuilder CreateHostBuilder() =>
         new HostBuilder()
-           .ConfigureAppConfiguration(ConfigureApplication)
+           .ConfigureAppConfiguration( ConfigureApplication )
            .ConfigureServices( ( hbc, s ) => ConfigureServices( hbc, s ) );
 
     protected virtual void ConfigureApplication( HostBuilderContext hbc, IConfigurationBuilder builder )
     {
-        var fileExists = File.Exists(_configPath);
-        if (!fileExists)
+        var fileExists = File.Exists( _configPath );
+        if( !fileExists )
         {
-            _logger?.LogWarning("Could not find user config file '{path}', creating default configuration", _configPath);
+            _logger?.LogWarning( "Could not find user config file '{path}', creating default configuration",
+                                 _configPath );
             AppConfig = new TConfig { UserConfigurationFilePath = _configPath };
             return;
         }
 
-        AppConfig = JsonSerializer.Deserialize<TConfig>(File.ReadAllText(_configPath), _jsonOptions);
+        AppConfig = JsonSerializer.Deserialize<TConfig>( File.ReadAllText( _configPath ), _jsonOptions );
 
-        if (AppConfig == null)
+        if( AppConfig == null )
         {
-            _logger?.LogError("Could not parse user config file '{path}'", _configPath);
+            _logger?.LogError( "Could not parse user config file '{path}'", _configPath );
             return;
         }
 
@@ -139,7 +142,7 @@ public class WinAppInitializerBase<TConfig>
         services.AddDataProtection()
                 .SetApplicationName( _cryptoAppName );
 
-        if( AppConfig != null)
+        if( AppConfig != null )
             services.AddSingleton( AppConfig );
 
         return services;

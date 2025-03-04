@@ -1,4 +1,5 @@
 ﻿#region copyright
+
 // Copyright (c) 2021, 2022, 2023 Mark A. Olbert 
 // https://www.JumpForJoySoftware.com
 // DebounceDispatcher.cs
@@ -17,6 +18,7 @@
 // 
 // You should have received a copy of the GNU General Public License along 
 // with WindowsUtilities. If not, see <https://www.gnu.org/licenses/>.
+
 #endregion
 
 using System;
@@ -30,9 +32,11 @@ public class DebounceDispatcher
 {
     private DispatcherTimer? _timer;
 
-    public void Debounce(int interval,
+    public void Debounce(
+        int interval,
         Action<object?> action,
-        object? optParam = null)
+        object? optParam = null
+    )
     {
         // kill pending timer and pending ticks
         _timer?.Stop();
@@ -41,7 +45,7 @@ public class DebounceDispatcher
         // timer is recreated for each event and effectively resets the timeout.
         // Action only fires after timeout has fully elapsed without other events firing in between
         _timer = new DispatcherTimer();
-        _timer.Tick += (_, _) => action.Invoke(optParam);
+        _timer.Tick += ( _, _ ) => action.Invoke( optParam );
 
         _timer.Start();
     }
