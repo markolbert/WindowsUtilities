@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace J4JSoftware.WindowsUtilities;
+﻿namespace J4JSoftware.WindowsUtilities;
 
 public class ThrottleAction<TParam> : ThrottleBase
 {

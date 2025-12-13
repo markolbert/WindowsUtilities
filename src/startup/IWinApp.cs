@@ -21,7 +21,6 @@
 
 #endregion
 
-using System;
 using Microsoft.AspNetCore.DataProtection;
 
 namespace J4JSoftware.WindowsUtilities;

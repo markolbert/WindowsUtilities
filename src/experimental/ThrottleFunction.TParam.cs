@@ -21,8 +21,6 @@
 
 #endregion
 
-using System;
-
 namespace J4JSoftware.WindowsUtilities;
 
 public class ThrottleFunc<TParam, TResult> : ThrottleBase

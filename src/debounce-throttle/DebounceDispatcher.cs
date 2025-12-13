@@ -21,7 +21,6 @@
 
 #endregion
 
-using System;
 using Microsoft.UI.Xaml;
 
 namespace J4JSoftware.WindowsUtilities;

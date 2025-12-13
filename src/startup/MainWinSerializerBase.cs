@@ -21,11 +21,7 @@
 
 #endregion
 
-using System;
-using System.IO;
-using System.Linq;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Windows.Devices.Display;
 using Windows.Devices.Enumeration;
 using Windows.Graphics;

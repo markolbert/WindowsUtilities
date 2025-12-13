@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace J4JSoftware.WindowsUtilities;
+﻿namespace J4JSoftware.WindowsUtilities;
 
 public class ThrottleFunc<TResult> : ThrottleBase
 {
